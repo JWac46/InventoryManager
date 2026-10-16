@@ -77,7 +77,17 @@ def update_item_quantity():
 
     except ValueError:
         print("Invalid input. Please enter a number.")
-    
+
+def remove_item():
+    """Remove an item from the inventory."""
+    name = input("Enter the name of the item to remove: ")
+    for item in inventory:
+        if item['name'].lower() == name.lower():
+            inventory.remove(item)
+            print(f"Item '{name}' removed from inventory.")
+            save_inventory(inventory, "inventory.txt")
+            return
+    print(f"Item '{name}' not found in inventory.")    
 
 def main():
     """Main function to run the inventory management system."""
