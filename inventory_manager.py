@@ -29,6 +29,15 @@ def save_inventory(inventory,filename):
         for item in inventory:
             file.write(f"{item['name']}|{item['category']}|{item['quantity']}\n")
 
+def view_inventory():
+    """Display the current inventory items."""
+    if not inventory:
+        print("Inventory is empty.")
+        return
+    print("Current Inventory:")
+    for item in inventory:
+        print(f"Name: {item['name']}, Category: {item['category']}, Quantity: {item['quantity']}")
+
 def main():
     """Main function to run the inventory management system."""
     print("Welcome to the Inventory Management System!")
