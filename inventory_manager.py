@@ -38,6 +38,20 @@ def view_inventory():
     for item in inventory:
         print(f"Name: {item['name']}, Category: {item['category']}, Quantity: {item['quantity']}")
 
+def add_item():
+    """Add a new item to the inventory."""
+    try:
+        name = input("Enter item name: ")
+        category = input("Enter item category: ")
+        quantity = int(input("Enter item quantity: "))
+        inventory.append({"name": name, "category": category, "quantity": quantity})
+        print(f"Item '{name}' added to inventory.")
+        save_inventory(inventory, "inventory.txt")
+    except ValueError:
+        print("Invalid input. Quantity must be an integer.")
+
+
+
 def main():
     """Main function to run the inventory management system."""
     print("Welcome to the Inventory Management System!")
