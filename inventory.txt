@@ -1,0 +1,7 @@
+Laptop charger|Electronics|15
+Mouse|Electronics|8
+Energy Drink|Beverages|24
+Water Bottle|Beverages|36
+Gold Fish crackers|Food|4
+Phone Charger|Electronics|12
+Apple|food|1
