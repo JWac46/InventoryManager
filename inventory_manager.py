@@ -102,6 +102,22 @@ def search_inventory():
             print(f"Name: {item['name']}, Category: {item['category']}, Quantity: {item['quantity']}")
     else:
         print(f"No items found matching '{name}'.")
+        
+def view_inventory_summary():
+    """Display a summary of the inventory, including total items and total quantity."""
+    total_items = len(inventory)
+    total_quantity = sum(item['quantity'] for item in inventory)
+    total_low_stock = sum(1 for item in inventory if item['quantity'] < 5)
+    print(f"Inventory Summary:")
+    print(f"Total unique items: {total_items}")
+    print(f"Total quantity of all items: {total_quantity}")
+    print(f"Total items with low stock (less than 5): {total_low_stock}")
+    
+    print("Items by category:")
+    categories = set(item['category'].lower() for item in inventory)
+    for category in categories:
+        category_items = [item for item in inventory if item['category'].lower() == category]
+        print(f"  {category}: {len(category_items)} items")
 
 def main():
     """Main function to run the inventory management system."""
