@@ -89,6 +89,20 @@ def remove_item():
             return
     print(f"Item '{name}' not found in inventory.")    
 
+def search_inventory():
+    """Search for an item in the inventory by name."""
+    name = input("Enter the name of the item to search: ")
+    found_items = []
+    for item in inventory:
+        if name.lower() in item['name'].lower():
+            found_items.append(item)
+    if found_items:
+        print("Search Results:")
+        for item in found_items:
+            print(f"Name: {item['name']}, Category: {item['category']}, Quantity: {item['quantity']}")
+    else:
+        print(f"No items found matching '{name}'.")
+
 def main():
     """Main function to run the inventory management system."""
     print("Welcome to the Inventory Management System!")
