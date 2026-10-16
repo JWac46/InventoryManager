@@ -50,7 +50,34 @@ def add_item():
     except ValueError:
         print("Invalid input. Quantity must be an integer.")
 
+def update_item_quantity():
+    """Update the quantity of an existing item in the inventory."""
+    for i, item in enumerate(inventory, start=1):
+        print(f"{i}. {item['name']} | {item['category']} | Quantity: {item['quantity']}")
 
+    try:
+        item_number = int(input("Enter the item number to update: "))
+
+        if item_number < 1 or item_number > len(inventory):
+            print("Invalid item number.")
+            return
+
+        new_quantity = int(input("Enter the new quantity: "))
+
+        if new_quantity < 0:
+            print("Quantity cannot be negative.")
+            return
+
+        item = inventory[item_number - 1]
+        item['quantity'] = new_quantity
+
+        print(f"{item['name']} quantity updated to {new_quantity}.")
+
+        save_inventory(inventory, "inventory.txt")
+
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+    
 
 def main():
     """Main function to run the inventory management system."""
